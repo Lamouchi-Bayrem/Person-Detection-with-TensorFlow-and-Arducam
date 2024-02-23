@@ -3,7 +3,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-// ArduCam pins
+// pins connection
 #define CAM_CS    10 // CS pin
 #define CAM_MOSI  11 // MOSI pin
 #define CAM_MISO  12 // MISO pin
@@ -28,13 +28,13 @@ void loop() {
 
   while (!myCAM.get_bit(ARDUCHIP_TRIG, CAP_DONE_MASK)) {}
 
-  // Read image data
+  // Read data
   uint32_t len = myCAM.read_fifo_length();
   Serial.write((uint8_t)(len >> 16));
   Serial.write((uint8_t)(len >> 8));
   Serial.write((uint8_t)len);
 
-  // Send image data
+  // Send data
   while (len--) {
     Serial.write(myCAM.read_fifo());
   }
