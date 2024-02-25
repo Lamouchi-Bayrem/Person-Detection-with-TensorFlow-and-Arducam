@@ -1,3 +1,6 @@
+// This script that involves image processing and inference, likely for detecting a person in an image.
+// we initializes a relay output pin (relayOut) and then proceeds to capture an image,
+// run it through a model, and based on the inference results, it activates the relay output if it detects a person.
 // at the top of the script, initialize a variable for the relay signal
 int relayOut = 10;
 
