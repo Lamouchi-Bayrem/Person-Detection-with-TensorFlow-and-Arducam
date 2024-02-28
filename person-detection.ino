@@ -9,7 +9,6 @@ void setup(){
    /*  ....   */
    pinMode(relayOut, OUTPUT);
 }
-
 // in the void() loop:
 void loop() {
 // Get image from provider.
@@ -22,7 +21,8 @@ if (kTfLiteOk != interpreter->Invoke()) {
 error_reporter->Report("Invoke failed.");
 }
 TfLiteTensor* output = interpreter->output(0);
-// Process the inference results.
+
+   // Process the inference results.
 uint8_t person_score = output->data.uint8[kPersonIndex];
 uint8_t no_person_score = output->data.uint8[kNotAPersonIndex];
 RespondToDetection(error_reporter, person_score, no_person_score);
